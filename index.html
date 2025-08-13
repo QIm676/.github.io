@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能数据分析平台</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📊 智能数据分析平台</h1>
+            <p>上传CSV或Excel文件，获取专业的数据分析结果</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 文件上传区域 -->
+            <section class="upload-section">
+                <h2>📁 数据文件上传</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📤</div>
+                        <p>拖拽文件到此处或点击选择文件</p>
+                        <p class="file-types">支持格式: CSV, Excel (.xlsx, .xls)</p>
+                        <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            选择文件
+                        </button>
+                    </div>
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">正在分析数据...</p>
+                </div>
+            </section>
+
+            <!-- 分析结果展示区域 -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>📈 分析结果</h2>
+                
+                <!-- 文件信息 -->
+                <div class="file-info" id="fileInfo"></div>
+
+                <!-- 数据概览 -->
+                <div class="overview-section">
+                    <h3>📋 数据概览</h3>
+                    <div class="overview-grid" id="overviewGrid"></div>
+                </div>
+
+                <!-- 图表展示 -->
+                <div class="charts-section">
+                    <h3>📊 图表分析</h3>
+                    <div class="charts-grid" id="chartsGrid"></div>
+                </div>
+
+                <!-- 数据洞察 -->
+                <div class="insights-section">
+                    <h3>💡 数据洞察</h3>
+                    <div class="insights-list" id="insightsList"></div>
+                </div>
+            </section>
+
+            <!-- 历史记录 -->
+            <section class="history-section">
+                <h2>🕒 分析历史</h2>
+                <div class="history-list" id="historyList">
+                    <p class="loading">正在加载历史记录...</p>
+                </div>
+            </section>
+
+            <!-- API测试区域 -->
+            <section class="api-test-section">
+                <h2>🔧 API接口测试</h2>
+                <div class="api-test-form">
+                    <h3>工作流分析接口测试</h3>
+                    <div class="form-group">
+                        <label for="testData">测试数据 (JSON格式):</label>
+                        <textarea id="testData" rows="6" placeholder='[{"name": "张三", "age": 25, "score": 85}, {"name": "李四", "age": 30, "score": 92}]'></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="includeCharts" checked> 包含图表数据
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeInsights" checked> 包含数据洞察
+                        </label>
+                    </div>
+                    <button class="test-btn" onclick="testWorkflowAPI()">测试工作流API</button>
+                    <div class="api-result" id="apiResult"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 智能数据分析平台 | 为智能体工作流提供专业的数据分析服务</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
